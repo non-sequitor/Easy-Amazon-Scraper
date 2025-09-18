@@ -20,7 +20,16 @@
     <button type="submit">Search</button>
   </form>
 
+  
+
   {% if results %}
+
+   <form method="get" style="margin-top:10px">
+      <input type="hidden" name="q" value="{{ query }}">
+      <input type="hidden" name="download" value="1">
+      <button type="submit">Download CSV</button>
+    </form>
+  
     <h3>Results for "{{ query }}"</h3>
     <table>
       <tr><th>Title</th><th>Price</th><th>Rating</th><th>Reviews</th><th>Link</th></tr>
@@ -35,11 +44,11 @@
       </tr>
       {% endfor %}
     </table>
-    <form method="get" style="margin-top:10px">
+<!--     <form method="get" style="margin-top:10px">
       <input type="hidden" name="q" value="{{ query }}">
       <input type="hidden" name="download" value="1">
       <button type="submit">Download CSV</button>
-    </form>
+    </form> -->
   {% endif %}
 </body>
 </html>
