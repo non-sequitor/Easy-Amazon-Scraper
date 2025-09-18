@@ -30,7 +30,11 @@
         <td>{{ r.price }}</td>
         <td>{{ r.rating }}</td>
         <td>{{ r.reviews }}</td>
-        <td><a class="button" href="{{ r.link }}" target="_blank">View</a></td>
+        <td>
+  <a class="button" href="{{ r.link }}" target="_blank" rel="noopener noreferrer">
+    View
+  </a>
+</td>
       </tr>
       {% endfor %}
     </table>
