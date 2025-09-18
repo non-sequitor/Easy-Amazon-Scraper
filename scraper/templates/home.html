@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Amazon Scraper</title>
+  <style>
+    body{font-family:Arial;text-align:center;margin:40px}
+    form{margin:20px auto}
+    input[type=text]{padding:8px;width:380px}
+    table{margin:auto;border-collapse:collapse;width:90%}
+    th,td{border:1px solid #ddd;padding:8px;text-align:left}
+    th{background:#f2f2f2}
+    a.button{background:#1f73ff;color:#fff;padding:6px 10px;border-radius:4px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <h1>Amazon Product Scraper</h1>
+  <form method="get">
+    <input name="q" type="text" placeholder="Search (e.g. laneige lip balm)" value="{{ query|default:'' }}" />
+    <button type="submit">Search</button>
+  </form>
+
+  {% if results %}
+    <h3>Results for "{{ query }}"</h3>
+    <table>
+      <tr><th>Title</th><th>Price</th><th>Rating</th><th>Reviews</th><th>Link</th></tr>
+      {% for r in results %}
+      <tr>
+        <td>{{ r.title }}</td>
+        <td>{{ r.price }}</td>
+        <td>{{ r.rating }}</td>
+        <td>{{ r.reviews }}</td>
+        <td><a class="button" href="{{ r.link }}" target="_blank">View</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <form method="get" style="margin-top:10px">
+      <input type="hidden" name="q" value="{{ query }}">
+      <input type="hidden" name="download" value="1">
+      <button type="submit">Download CSV</button>
+    </form>
+  {% endif %}
+</body>
+</html>
