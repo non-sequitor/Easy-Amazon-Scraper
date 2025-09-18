@@ -16,7 +16,7 @@
 <body>
   <h1>Amazon Product Scraper</h1>
   <form method="get">
-    <input name="q" type="text" placeholder="Search (e.g. laneige lip balm)" value="{{ query|default:'' }}" />
+    <input name="q" type="text" placeholder="Search " value="{{ query|default:'' }}" />
     <button type="submit">Search</button>
   </form>
 
@@ -30,11 +30,8 @@
         <td>{{ r.price }}</td>
         <td>{{ r.rating }}</td>
         <td>{{ r.reviews }}</td>
-        <td>
-  <a class="button" href="{{ r.link }}" target="_blank" rel="noopener noreferrer">
-    View
-  </a>
-</td>
+        <td><a class="button" href="{{ r.link }}" target="_blank">View</a></td>
+
       </tr>
       {% endfor %}
     </table>
