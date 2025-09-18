@@ -31,8 +31,12 @@ def scrape_amazon(query, pages=3, limit=12):
 
             title = h2.text.strip()
             a_tag = h2.find("a")
-            href = a_tag["href"] if a_tag else ""
-            link = "https://www.amazon.in" + href if href else ""
+            # href = a_tag["href"] if a_tag else ""
+            # link = "https://www.amazon.in" + href if href else ""
+            href = h2.find("a")["href"] if h2.find("a") else ""
+            raw_link = "https://www.amazon.in" + href if href else ""
+            link = f"http://api.scraperapi.com?api_key={API_KEY}&url={raw_link}" if raw_link else ""
+
 
             price_whole = r.find("span", class_="a-price-whole")
             price_frac = r.find("span", class_="a-price-fraction")
